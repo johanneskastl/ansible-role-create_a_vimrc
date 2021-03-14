@@ -1,0 +1,21 @@
+---
+# create_a_vimrc/tasks/main.yml
+
+- name: 'Create .vimrc for root'
+  template:
+    src: 'vimrc.j2'
+    dest: '/root/.vimrc'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+
+- name: 'Create .vimrc for other users (if any are supplied)'
+  template:
+    src: 'vimrc.j2'
+    dest: "/home/{{ item }}/.vimrc"
+    owner: "{{ item }}"
+    group: "{{ item }}"
+    mode: '0644'
+  with_items:
+    - "{{ additional_users }}"
+  when: 'additional_users is defined'
