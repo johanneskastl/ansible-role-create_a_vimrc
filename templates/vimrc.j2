@@ -1,0 +1,47 @@
+"
+" {{ ansible_managed }}
+"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set colorscheme
+colo koehler
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" enable syntax highlighting
+syntax on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2  " always show a status line, not only if the window is split
+set scrolloff=3   " always show at least 3 lines of context before/after the current line
+set paste         " in paste mode, autoindent doesn‘t mess up things when pasting data into vim
+set smartindent   " do the same in a more intelligent way for code
+set showmode      " show current mode at the bottom
+set nocompatible  " disable vi compatibility mode (enable more vim features by default)
+set showmatch     " show matching brackets while typing it
+
+" map gt to jump to tags in help documents
+nmap gt <C-]>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tabstop=8	  " Indentation levels every four columns
+set shiftwidth=8  " Indent/outdent by four columns
+set shiftround	  " Indent/outdent to nearest tabstop
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hlsearch
+noremap <C-H> :tabprev <CR>
+noremap <C-L> :tabnext <CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
+set splitbelow
+set splitright
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" https://stackoverflow.com/questions/7434369/vim-split-window-when-opening-multiple-files
+if argc() == 2
+  silent vertical all
+endif
