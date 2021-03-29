@@ -1,6 +1,11 @@
 ---
 # create_a_vimrc/tasks/main.yml
 
+- name: 'Set primary group to users on SUSE/openSUSE'
+  set_fact:
+    primary_group_name: 'users'
+  when: 'ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap" or ansible_distribution == "openSUSE MicroOS" or ansible_distribution == "openSUSE Tumbleweed"'
+
 - name: 'Create .vimrc for root'
   template:
     src: 'vimrc.j2'
@@ -14,7 +19,7 @@
     src: 'vimrc.j2'
     dest: "/home/{{ item }}/.vimrc"
     owner: "{{ item }}"
-    group: "{{ item }}"
+    group: "{{ primary_group_name | default(item) }}"
     mode: '0644'
   with_items:
     - "{{ additional_users }}"
