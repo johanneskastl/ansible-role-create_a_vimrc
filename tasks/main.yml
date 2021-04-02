@@ -6,6 +6,16 @@
     primary_group_name: 'users'
   when: 'ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap" or ansible_distribution == "openSUSE MicroOS" or ansible_distribution == "openSUSE Tumbleweed"'
 
+- name: 'Install package vim-data'
+  package:
+    name: 'vim-data'
+  when: '
+    ansible_distribution == "SLES" or
+    ansible_distribution == "openSUSE Leap"
+    or ansible_distribution == "openSUSE MicroOS"
+    or ansible_distribution == "openSUSE Tumbleweed"
+    '
+
 - name: 'Create .vimrc for root'
   template:
     src: 'vimrc.j2'
