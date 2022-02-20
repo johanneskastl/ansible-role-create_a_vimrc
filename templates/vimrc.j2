@@ -19,12 +19,16 @@ set showmode      " show current mode at the bottom
 set nocompatible  " disable vi compatibility mode (enable more vim features by default)
 set showmatch     " show matching brackets while typing it
 
+" https://stackoverflow.com/questions/2287440/how-to-do-case-insensitive-search-in-vim
+:set ignorecase
+:set smartcase
+
 " map gt to jump to tags in help documents
 nmap gt <C-]>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=8	  " Indentation levels every four columns
-set shiftwidth=8  " Indent/outdent by four columns
+set tabstop=8	  " Indentation levels every eight columns
+set shiftwidth=8  " Indent/outdent by eight columns
 set shiftround	  " Indent/outdent to nearest tabstop
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
