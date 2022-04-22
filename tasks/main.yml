@@ -4,7 +4,12 @@
 - name: 'Set primary group to users on SUSE/openSUSE'
   set_fact:
     primary_group_name: 'users'
-  when: 'ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap" or ansible_distribution == "openSUSE MicroOS" or ansible_distribution == "openSUSE Tumbleweed"'
+  when: '
+    ansible_distribution == "SLES" or
+    ansible_distribution == "openSUSE Leap" or
+    ansible_distribution == "openSUSE MicroOS" or
+    ansible_distribution == "openSUSE Tumbleweed"
+    '
 
 - name: 'Install package vim-data'
   package:
