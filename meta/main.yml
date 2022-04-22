@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: 'create_a_vimrc'
+  namespace: 'johanneskastl'
   author: 'Johannes Kastl'
   description: 'Create a sensible .vimrc'
   company: 'B1 Systems GmbH'
