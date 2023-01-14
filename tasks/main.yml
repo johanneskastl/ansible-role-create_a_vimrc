@@ -2,7 +2,7 @@
 # create_a_vimrc/tasks/main.yml
 
 - name: 'Set primary group to users on SUSE/openSUSE'
-  set_fact:
+  ansible.builtin.set_fact:
     primary_group_name: 'users'
   when: '
     ansible_distribution == "SLES" or
@@ -12,7 +12,7 @@
     '
 
 - name: 'Install package vim-data'
-  package:
+  ansible.builtin.package:
     name: 'vim-data'
   when: '
     ansible_distribution == "SLES" or
@@ -22,7 +22,7 @@
     '
 
 - name: 'Create .vimrc for root'
-  template:
+  ansible.builtin.template:
     src: 'vimrc.j2'
     dest: '/root/.vimrc'
     owner: 'root'
@@ -30,7 +30,7 @@
     mode: '0644'
 
 - name: 'Create .vimrc for other users (if any are supplied)'
-  template:
+  ansible.builtin.template:
     src: 'vimrc.j2'
     dest: "/home/{{ item }}/.vimrc"
     owner: "{{ item }}"
