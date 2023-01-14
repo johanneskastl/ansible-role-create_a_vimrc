@@ -21,6 +21,10 @@
     or ansible_distribution == "openSUSE Tumbleweed"
     '
 
+- name: 'Install package vim'
+  ansible.builtin.package:
+    name: 'vim'
+
 - name: 'Create .vimrc for root'
   ansible.builtin.template:
     src: 'vimrc.j2'
