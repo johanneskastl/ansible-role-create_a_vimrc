@@ -19,6 +19,9 @@ galaxy_info:
     - name: Fedora
       versions:
         - all
+    - name: OpenWrt
+      versions:
+        - all
     - name: opensuse
       versions:
         - all
