@@ -1,0 +1,4 @@
+---
+# create_a_vimrc/defaults/main.yml
+
+vimrc_for_root: true
