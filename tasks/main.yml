@@ -21,12 +21,13 @@
 - name: 'Install package vim-data'
   ansible.builtin.package:
     name: 'vim-data'
-  when: '
-    ansible_distribution == "SLES" or
-    ansible_distribution == "openSUSE Leap"
-    or ansible_distribution == "openSUSE MicroOS"
-    or ansible_distribution == "openSUSE Tumbleweed"
-    '
+  when:
+    - '
+      ansible_distribution == "SLES"
+      or ansible_distribution == "openSUSE Leap"
+      or ansible_distribution == "openSUSE MicroOS"
+      or ansible_distribution == "openSUSE Tumbleweed"
+      '
 
 - name: 'Install package vim'
   ansible.builtin.package:
