@@ -37,6 +37,16 @@
   when:
     - not rpm_ostree_detection.stat.exists
 
+- name: 'Install package vim and vim-data on Fedora CoreOS'
+  community.general.rpm_ostree_pkg:
+    name:
+      - 'vim'
+      - 'vim-data'
+  notify:
+    - 'Reboot on CoreOS'
+  when:
+    - rpm_ostree_detection.stat.exists
+
 - name: 'Create .vimrc for root'
   ansible.builtin.template:
     src: 'vimrc.j2'
