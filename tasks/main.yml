@@ -31,6 +31,8 @@
 - name: 'Install package vim'
   ansible.builtin.package:
     name: 'vim'
+  when:
+    - not rpm_ostree_detection.stat.exists
 
 - name: 'Create .vimrc for root'
   ansible.builtin.template:
