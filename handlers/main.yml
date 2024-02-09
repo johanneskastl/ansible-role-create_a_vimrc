@@ -1,0 +1,6 @@
+---
+
+- name: 'Reboot on CoreOS'
+  ansible.builtin.reboot:
+  when:
+    - rpm_ostree_detection.stat.exists
