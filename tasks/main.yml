@@ -28,6 +28,7 @@
       or ansible_distribution == "openSUSE MicroOS"
       or ansible_distribution == "openSUSE Tumbleweed"
       '
+    - not rpm_ostree_detection.stat.exists
 
 - name: 'Install package vim'
   ansible.builtin.package:
