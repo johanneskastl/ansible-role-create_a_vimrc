@@ -11,13 +11,6 @@
     ansible_distribution == "openSUSE Tumbleweed"
     '
 
-- name: 'Check if we are running on a rpm-ostree system'
-  ansible.builtin.stat:
-    path: '/usr/bin/rpm-ostree'
-  changed_when: false
-  failed_when: false
-  register: rpm_ostree_detection
-
 - name: 'Install package vim-data'
   ansible.builtin.package:
     name: 'vim-data'
@@ -29,13 +22,13 @@
       or ansible_distribution == "openSUSE MicroOS"
       or ansible_distribution == "openSUSE Tumbleweed"
       '
-    - not rpm_ostree_detection.stat.exists
+    - not ansible_pkg_mgr == "atomic_container"
 
 - name: 'Install package vim'
   ansible.builtin.package:
     name: 'vim'
   when:
-    - not rpm_ostree_detection.stat.exists
+    - not ansible_pkg_mgr == "atomic_container"
 
 - name: 'Install package vim and vim-data on Fedora CoreOS'
   community.general.rpm_ostree_pkg:
@@ -45,7 +38,7 @@
   notify:
     - 'Reboot on CoreOS'
   when:
-    - rpm_ostree_detection.stat.exists
+    - ansible_pkg_mgr == "atomic_container"
 
 - name: 'Create .vimrc for root'
   ansible.builtin.template:
