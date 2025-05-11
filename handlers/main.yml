@@ -4,3 +4,8 @@
   ansible.builtin.reboot:
   when:
     - rpm_ostree_detection.stat.exists
+
+- name: 'Reboot on openSUSE MicroOS'
+  ansible.builtin.reboot:
+  when:
+    - ansible_distribution == "openSUSE MicroOS"
