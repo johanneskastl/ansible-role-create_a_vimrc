@@ -49,7 +49,7 @@
     cmd: /usr/sbin/transactional-update --non-interactive --continue pkg in vim vim-data
   register: package_install_output
   changed_when:
-    - "'Nothing to do' not in package_install_output.stdout"
+    - "'zypper: nothing to update' not in package_install_output.stdout"
   notify:
     - 'Reboot on openSUSE MicroOS'
   when:
