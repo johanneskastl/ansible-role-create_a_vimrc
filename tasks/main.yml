@@ -29,6 +29,14 @@
   when:
     - not ansible_pkg_mgr == "atomic_container"
     - ansible_distribution != "openSUSE MicroOS"
+    - ansible_distribution != "Debian"
+
+- name: 'Install package vim'
+  ansible.builtin.apt:
+    name: 'vim'
+    update_cache: true
+  when:
+    - ansible_distribution == "Debian"
 
 #
 # currently fails with 'failed to parse zypper xml output: no element found: line 1, column 0'
